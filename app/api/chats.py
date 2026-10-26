@@ -8,6 +8,9 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from langchain_core.messages import AIMessageChunk, HumanMessage
 from pydantic import BaseModel, Field
+# from fastapi import APIRouter
+
+# router = APIRouter(prefix="/chats", tags=["Chats"])
 
 from app.database.connection import (
     create_chat,
