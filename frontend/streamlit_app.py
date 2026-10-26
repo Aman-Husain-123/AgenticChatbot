@@ -1,11 +1,14 @@
-
 import json
+import os
 
 import requests
 import streamlit as st
 
 
-API_URL = "https://agenticchatbot-1.onrender.com"
+API_URL = os.getenv(
+    "API_URL",
+    "https://agenticchatbot-1.onrender.com",
+)
 
 st.set_page_config(
     page_title="Agentic Chatbot",
@@ -158,60 +161,3 @@ else:
                 st.error(f"Request failed: {exc}")
             except (ValueError, KeyError) as exc:
                 st.error(f"Unexpected server response: {exc}")
-
-# **Important:** This is a starter frontend. It assumes the backend's chat API is accessible and that your database is configured correctly. We will improve chat switching, message error handling, authentication, and production security later.
-
-# ### Step 4: Push your changes
-
-# Run:
-
-# ```powershell
-# git add .
-# git commit -m "Add Streamlit chatbot frontend"
-# git push
-# ```
-
-# ### Step 5: Create another Render service
-
-# Open the [Render Dashboard](https://dashboard.render.com/?utm_source=chatgpt.com).
-
-# 1. Click **New → Web Service**.
-# 2. Select your existing GitHub repository.
-# 3. Give the new service the name `agenticchatbot-ui`.
-# 4. Use the same Python version as your backend.
-
-# Configure:
-
-# **Build Command**
-
-# ```bash
-# uv sync --locked
-# ```
-
-# **Start Command**
-
-# ```bash
-# uv run streamlit run frontend/streamlit_app.py --server.port $PORT --server.address 0.0.0.0
-# ```
-
-# 6. Deploy the service.
-
-# Render will give you a separate URL for your Streamlit interface.
-
-# You can then open that URL to use the graphical chatbot.
-
-# ---
-
-# ## 4. One important storage warning
-
-# Your current backend stores chats in SQLite. If you haven't configured persistent storage, your conversation history may disappear after a redeployment or instance replacement.
-
-# Also, if the backend is running on Render's free tier, it may spin down when inactive. Your first request after inactivity may take some time.
-
-# Before you share this chatbot with other users, we should address persistent storage, authentication, and chat ownership.
-
-# ### What I recommend next
-
-# **First, open your backend's `/docs` endpoint and confirm that you can create a chat and receive a response. Then deploy the Streamlit frontend.**
-
-# Once that works, we can add the sidebar conversation management, message editing, Human-in-the-Loop approval interface, and monitoring step by step.
