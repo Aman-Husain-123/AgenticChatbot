@@ -20,6 +20,7 @@ dependencies = [
     { name = "langgraph" },
     { name = "langgraph-checkpoint-sqlite" },
     { name = "python-dotenv" },
+    { name = "requests" },
     { name = "streamlit" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -37,6 +38,7 @@ requires-dist = [
     { name = "langgraph", specifier = ">=1.2.17" },
     { name = "langgraph-checkpoint-sqlite", specifier = ">=3.1.2" },
     { name = "python-dotenv", specifier = ">=1.2.4" },
+    { name = "requests", specifier = ">=2.34.2" },
     { name = "streamlit", specifier = ">=1.66.1" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.54.0" },
 ]

@@ -5,10 +5,11 @@ import requests
 import streamlit as st
 
 
-API_URL = os.getenv(
-    "API_URL",
-    "https://agenticchatbot-1.onrender.com",
-)
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+# If API_URL points to this service itself, route to local FastAPI instance
+if "agenticchatbot-1.onrender.com" in API_URL:
+    API_URL = "http://127.0.0.1:8000"
+
 
 st.set_page_config(
     page_title="Agentic Chatbot",
